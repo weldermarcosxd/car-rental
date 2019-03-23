@@ -1,5 +1,6 @@
-from PyQt4 import QtCore, QtGui
-from PyQt4.QtGui import *
+from PyQt5 import QtCore, QtGui
+from PyQt5.QtWidgets import *
+from PyQt5.QtGui import *
 from Controller.AluguelCTR import AluguelCTR
 
 try:
@@ -9,12 +10,12 @@ except AttributeError:
         return s
 
 try:
-    _encoding = QtGui.QApplication.UnicodeUTF8
+    _encoding = QApplication.UnicodeUTF8
     def _translate(context, text, disambig):
-        return QtGui.QApplication.translate(context, text, disambig, _encoding)
+        return QApplication.translate(context, text, disambig, _encoding)
 except AttributeError:
     def _translate(context, text, disambig):
-        return QtGui.QApplication.translate(context, text, disambig)
+        return QApplication.translate(context, text, disambig)
 
 class Ui_FrmPesqAluguel(object):
     def DevolverVeiculo(self):
@@ -114,10 +115,10 @@ class Ui_FrmPesqAluguel(object):
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(_fromUtf8("Imagens/btnListAluguel.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         FrmPesqAluguel.setWindowIcon(icon)
-        self.groupBox = QtGui.QGroupBox(FrmPesqAluguel)
+        self.groupBox = QGroupBox(FrmPesqAluguel)
         self.groupBox.setGeometry(QtCore.QRect(10, 0, 501, 71))
         self.groupBox.setObjectName(_fromUtf8("groupBox"))
-        self.cbPesquisa = QtGui.QComboBox(self.groupBox)
+        self.cbPesquisa = QComboBox(self.groupBox)
         self.cbPesquisa.setGeometry(QtCore.QRect(10, 40, 161, 22))
         self.cbPesquisa.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.cbPesquisa.setObjectName(_fromUtf8("cbPesquisa"))
@@ -125,12 +126,12 @@ class Ui_FrmPesqAluguel(object):
         self.cbPesquisa.addItem(_fromUtf8(""))
         self.cbPesquisa.addItem(_fromUtf8(""))
         self.cbPesquisa.addItem(_fromUtf8(""))
-        self.edtPesquisa = QtGui.QLineEdit(self.groupBox)
+        self.edtPesquisa = QLineEdit(self.groupBox)
         self.edtPesquisa.setGeometry(QtCore.QRect(180, 40, 221, 20))
         self.edtPesquisa.setObjectName(_fromUtf8("edtPesquisa"))
 
         #BTN PESQUISA
-        self.btnPesquisa = QtGui.QPushButton(self.groupBox)
+        self.btnPesquisa = QPushButton(self.groupBox)
         self.btnPesquisa.setGeometry(QtCore.QRect(404, 10, 91, 51))
         self.btnPesquisa.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         icon1 = QtGui.QIcon()
@@ -141,40 +142,40 @@ class Ui_FrmPesqAluguel(object):
         #BTN PESQUISAR CLICK #
         self.btnPesquisa.clicked.connect(lambda: self.PesquisarAluguel(self.edtPesquisa.text(), self.cbPesquisa.currentText()))
 
-        self.gridAluguel = QtGui.QTableWidget(FrmPesqAluguel)
+        self.gridAluguel = QTableWidget(FrmPesqAluguel)
         self.gridAluguel.setGeometry(QtCore.QRect(10, 80, 501, 192))
         self.gridAluguel.setObjectName(_fromUtf8("gridAluguel"))
         self.gridAluguel.setColumnCount(9)
         self.gridAluguel.setRowCount(0)
-        item = QtGui.QTableWidgetItem()
+        item = QTableWidgetItem()
         self.gridAluguel.setHorizontalHeaderItem(0, item)
-        item = QtGui.QTableWidgetItem()
+        item = QTableWidgetItem()
         self.gridAluguel.setHorizontalHeaderItem(1, item)
-        item = QtGui.QTableWidgetItem()
+        item = QTableWidgetItem()
         self.gridAluguel.setHorizontalHeaderItem(2, item)
-        item = QtGui.QTableWidgetItem()
+        item = QTableWidgetItem()
         self.gridAluguel.setHorizontalHeaderItem(3, item)
-        item = QtGui.QTableWidgetItem()
+        item = QTableWidgetItem()
         self.gridAluguel.setHorizontalHeaderItem(4, item)
-        item = QtGui.QTableWidgetItem()
+        item = QTableWidgetItem()
         self.gridAluguel.setHorizontalHeaderItem(5, item)
-        item = QtGui.QTableWidgetItem()
+        item = QTableWidgetItem()
         self.gridAluguel.setHorizontalHeaderItem(6, item)
-        item = QtGui.QTableWidgetItem()
+        item = QTableWidgetItem()
         self.gridAluguel.setHorizontalHeaderItem(7, item)
-        item = QtGui.QTableWidgetItem()
+        item = QTableWidgetItem()
         self.gridAluguel.setHorizontalHeaderItem(8, item)
         #AJUSTANDO MODO DE SELEÇÃO - Uma linha por vez, desalitar editar
         self.gridAluguel.setSelectionBehavior(QAbstractItemView.SelectRows)
-        self.gridAluguel.setEditTriggers(QtGui.QAbstractItemView.NoEditTriggers)
-        self.gridAluguel.setSelectionMode(QtGui.QAbstractItemView.SingleSelection)
+        self.gridAluguel.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.gridAluguel.setSelectionMode(QAbstractItemView.SingleSelection)
 
-        self.groupBox_2 = QtGui.QGroupBox(FrmPesqAluguel)
+        self.groupBox_2 = QGroupBox(FrmPesqAluguel)
         self.groupBox_2.setGeometry(QtCore.QRect(10, 280, 501, 80))
         self.groupBox_2.setObjectName(_fromUtf8("groupBox_2"))
 
         #BTN DEVOLVER
-        self.btnDevolver = QtGui.QPushButton(self.groupBox_2)
+        self.btnDevolver = QPushButton(self.groupBox_2)
         self.btnDevolver.setGeometry(QtCore.QRect(394, 10, 101, 61))
         self.btnDevolver.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         icon2 = QtGui.QIcon()
@@ -186,22 +187,22 @@ class Ui_FrmPesqAluguel(object):
         self.btnDevolver.clicked.connect(lambda: self.DevolverVeiculo())
 
 
-        self.label = QtGui.QLabel(self.groupBox_2)
+        self.label = QLabel(self.groupBox_2)
         self.label.setGeometry(QtCore.QRect(10, 20, 101, 16))
         self.label.setObjectName(_fromUtf8("label"))
-        self.edtDevolucao = QtGui.QLineEdit(self.groupBox_2)
+        self.edtDevolucao = QLineEdit(self.groupBox_2)
         self.edtDevolucao.setGeometry(QtCore.QRect(10, 40, 113, 20))
         self.edtDevolucao.setObjectName(_fromUtf8("edtDevolucao"))
-        self.edtMulta = QtGui.QLineEdit(self.groupBox_2)
+        self.edtMulta = QLineEdit(self.groupBox_2)
         self.edtMulta.setGeometry(QtCore.QRect(130, 40, 113, 20))
         self.edtMulta.setObjectName(_fromUtf8("edtMulta"))
-        self.edtSaida = QtGui.QLineEdit(self.groupBox_2)
+        self.edtSaida = QLineEdit(self.groupBox_2)
         self.edtSaida.setGeometry(QtCore.QRect(250, 40, 113, 20))
         self.edtSaida.setObjectName(_fromUtf8("edtSaida"))
-        self.label_2 = QtGui.QLabel(self.groupBox_2)
+        self.label_2 = QLabel(self.groupBox_2)
         self.label_2.setGeometry(QtCore.QRect(130, 20, 46, 13))
         self.label_2.setObjectName(_fromUtf8("label_2"))
-        self.label_3 = QtGui.QLabel(self.groupBox_2)
+        self.label_3 = QLabel(self.groupBox_2)
         self.label_3.setGeometry(QtCore.QRect(250, 20, 46, 13))
         self.label_3.setObjectName(_fromUtf8("label_3"))
 
@@ -245,7 +246,7 @@ class Ui_FrmPesqAluguel(object):
 
 if __name__ == "__main__":
     import sys
-    app = QtGui.QApplication(sys.argv)
+    app = QApplication(sys.argv)
     FrmPesqAluguel = QtGui.QDialog()
     ui = Ui_FrmPesqAluguel()
     ui.setupUi(FrmPesqAluguel)

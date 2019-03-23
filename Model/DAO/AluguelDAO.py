@@ -1,5 +1,6 @@
-from PyQt4.QtSql import QSqlQuery
+from PyQt5.QtSql import QSqlQuery
 from DataBase.ConexaoSQL import ConexaoSQL
+
 
 class AluguelDAO:
     def CadastrarAluguel(aluguel):
@@ -9,8 +10,8 @@ class AluguelDAO:
 
         query = QSqlQuery()
 
-
-        query.prepare("UPDATE Veiculo SET Alugado = 'Sim' WHERE CodigoVeic = "+aluguel.CodigoVeic)
+        query.prepare(
+            "UPDATE Veiculo SET Alugado = 'Sim' WHERE CodigoVeic = " + aluguel.CodigoVeic)
         query.exec_()
         db.commit()
 
@@ -45,25 +46,25 @@ class AluguelDAO:
         db = conn.getConexao()
         db.open()
 
-        if tipo=='Código Aluguel':
+        if tipo == 'Código Aluguel':
             sql = "SELECT Aluguel.*, Cliente.Nome FROM Aluguel " \
                   "INNER JOIN Cliente ON Aluguel.CodigoCli = Cliente.CodigoCli " \
-                   "where Aluguel.CodigoAlug = " + valor
+                "where Aluguel.CodigoAlug = " + valor
             query = QSqlQuery(sql)
-        elif tipo=='Código Cliente':
+        elif tipo == 'Código Cliente':
             sql = "SELECT Aluguel.*, Cliente.Nome FROM Aluguel " \
-                    "INNER JOIN Cliente ON Aluguel.CodigoCli = Cliente.CodigoCli " \
-                    "where Aluguel.CodigoCli = "+valor
+                "INNER JOIN Cliente ON Aluguel.CodigoCli = Cliente.CodigoCli " \
+                "where Aluguel.CodigoCli = " + valor
             query = QSqlQuery(sql)
-        elif tipo=='Código Veículo':
+        elif tipo == 'Código Veículo':
             sql = "SELECT Aluguel.*, Cliente.Nome FROM Aluguel " \
-                    "INNER JOIN Cliente ON Aluguel.CodigoCli = Cliente.CodigoCli " \
-                    "where Aluguel.CodigoVeic = " + valor
+                "INNER JOIN Cliente ON Aluguel.CodigoCli = Cliente.CodigoCli " \
+                "where Aluguel.CodigoVeic = " + valor
             query = QSqlQuery(sql)
-        elif tipo=='Nome Cliente':
+        elif tipo == 'Nome Cliente':
             sql = "SELECT Aluguel.*, Cliente.Nome FROM Aluguel " \
-                    "INNER JOIN Cliente ON Aluguel.CodigoCli = Cliente.CodigoCli " \
-                    "where Cliente.Nome = '" + valor+"'"
+                "INNER JOIN Cliente ON Aluguel.CodigoCli = Cliente.CodigoCli " \
+                "where Cliente.Nome = '" + valor + "'"
             query = QSqlQuery(sql)
 
         return query
@@ -73,26 +74,23 @@ class AluguelDAO:
         db = conn.getConexao()
         db.open()
 
-
-
         select = "SELECT Veiculo.CodigoVeic FROM Aluguel"\
-                      " INNER JOIN Veiculo ON Aluguel.CodigoVeic = Veiculo.CodigoVeic"\
-                      " WHERE Aluguel.CodigoAlug = "+codigoAlug
+            " INNER JOIN Veiculo ON Aluguel.CodigoVeic = Veiculo.CodigoVeic"\
+            " WHERE Aluguel.CodigoAlug = " + codigoAlug
 
         query = QSqlQuery(select)
 
         while query.next():
             codigoVeic = str(query.value(0))
 
-        sql = "UPDATE Veiculo SET Alugado = 'Não' WHERE CodigoVeic = "+codigoVeic
+        sql = "UPDATE Veiculo SET Alugado = 'Não' WHERE CodigoVeic = " + codigoVeic
         query.prepare(sql)
         query.exec_()
         db.commit()
 
-
-        sql = "UPDATE Aluguel SET DataDevolucao = '"+aluguel.DataDevolucao+"', ValorMulta = '"+aluguel.ValorMulta\
-                      +"', KmSaida = '"+aluguel.KmSaida\
-                      +"' WHERE CodigoAlug = "+codigoAlug
+        sql = "UPDATE Aluguel SET DataDevolucao = '" + aluguel.DataDevolucao + "', ValorMulta = '" + aluguel.ValorMulta\
+            + "', KmSaida = '" + aluguel.KmSaida\
+            + "' WHERE CodigoAlug = " + codigoAlug
         print(sql)
         query.prepare(sql)
         print

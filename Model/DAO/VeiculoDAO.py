@@ -1,5 +1,6 @@
-from PyQt4.QtSql import QSqlQuery
+from PyQt5.QtSql import QSqlQuery
 from DataBase.ConexaoSQL import ConexaoSQL
+
 
 class VeiculoDAO:
     def CadastrarVeiculo(veiculo):
@@ -31,12 +32,13 @@ class VeiculoDAO:
         db.open()
 
         query = QSqlQuery()
-        query.prepare("UPDATE Veiculo SET Modelo = '"+veiculo.Modelo+"', Marca = '"+veiculo.Marca
-                      +"', AnoModelo = "+veiculo.AnoModelo+", Placa = '"+veiculo.Placa
-                      +"', Alugado = '"+veiculo.Alugado+"', Batido = '"+veiculo.Batido
-                      +"', KmAtual = '"+veiculo.KmAtual+"', ValorDiaria = '"+veiculo.ValorDiaria
-                      +"', Descricao = '"+veiculo.Descricao+"', TipoVeiculo = '"+veiculo.TipoVeiculo
-                      +"' WHERE CodigoVeic = "+codigoVeic)
+        query.prepare("UPDATE Veiculo SET Modelo = '" + veiculo.Modelo + "', Marca = '" + veiculo.Marca
+                      + "', AnoModelo = " + veiculo.AnoModelo + ", Placa = '" + veiculo.Placa
+                      + "', Alugado = '" + veiculo.Alugado + "', Batido = '" + veiculo.Batido
+                      + "', KmAtual = '" + veiculo.KmAtual + "', ValorDiaria = '" + veiculo.ValorDiaria
+                      + "', Descricao = '" + veiculo.Descricao +
+                      "', TipoVeiculo = '" + veiculo.TipoVeiculo
+                      + "' WHERE CodigoVeic = " + codigoVeic)
         query.exec_()
         db.commit()
 
@@ -76,24 +78,20 @@ class VeiculoDAO:
         db = conn.getConexao()
         db.open()
 
-        if tipo=='Código':
+        if tipo == 'Código':
             sql = "SELECT * FROM Veiculo where CodigoVeic = " + valor
             query = QSqlQuery(sql)
-        elif tipo=='Marca':
-            sql = "SELECT * FROM Veiculo where Marca = '"+valor+"'"
+        elif tipo == 'Marca':
+            sql = "SELECT * FROM Veiculo where Marca = '" + valor + "'"
             query = QSqlQuery(sql)
-        elif tipo=='Modelo':
-            sql = "SELECT * FROM Veiculo where Modelo = '" + valor+"'"
+        elif tipo == 'Modelo':
+            sql = "SELECT * FROM Veiculo where Modelo = '" + valor + "'"
             query = QSqlQuery(sql)
-        elif tipo=='Disponível':
+        elif tipo == 'Disponível':
             sql = "SELECT * FROM Veiculo where Alugado = 'Não'"
             query = QSqlQuery(sql)
-        elif tipo=='Alugado':
+        elif tipo == 'Alugado':
             sql = "SELECT * FROM Veiculo where Alugado = 'Sim'"
             query = QSqlQuery(sql)
 
         return query
-
-
-
-

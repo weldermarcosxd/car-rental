@@ -1,5 +1,6 @@
-from PyQt4.QtSql import QSqlQuery
+from PyQt5.QtSql import QSqlQuery
 from DataBase.ConexaoSQL import ConexaoSQL
+
 
 class ClienteDAO:
     def CadastrarCliente(cliente):
@@ -24,10 +25,10 @@ class ClienteDAO:
         db.open()
 
         query = QSqlQuery()
-        query.prepare("UPDATE Cliente SET Nome = '"+cliente.Nome+"', CPF = '"+cliente.CPF
-                      +"', Endereco = '"+cliente.Endereco+"', Email = '"+cliente.Email
-                      +"', Telefone = '"+cliente.Telefone
-                      +"' WHERE CodigoCli = "+codigoCli)
+        query.prepare("UPDATE Cliente SET Nome = '" + cliente.Nome + "', CPF = '" + cliente.CPF
+                      + "', Endereco = '" + cliente.Endereco + "', Email = '" + cliente.Email
+                      + "', Telefone = '" + cliente.Telefone
+                      + "' WHERE CodigoCli = " + codigoCli)
         query.exec_()
         db.commit()
 
@@ -57,18 +58,14 @@ class ClienteDAO:
         db = conn.getConexao()
         db.open()
 
-        if tipo=='Código':
+        if tipo == 'Código':
             sql = "SELECT * FROM Cliente where CodigoCli = " + valor
             query = QSqlQuery(sql)
-        elif tipo=='Nome':
-            sql = "SELECT * FROM Cliente where Nome = '"+valor+"'"
+        elif tipo == 'Nome':
+            sql = "SELECT * FROM Cliente where Nome = '" + valor + "'"
             query = QSqlQuery(sql)
-        elif tipo=='CPF':
-            sql = "SELECT * FROM Cliente where CPF = '" + valor+"'"
+        elif tipo == 'CPF':
+            sql = "SELECT * FROM Cliente where CPF = '" + valor + "'"
             query = QSqlQuery(sql)
 
         return query
-
-
-
-

@@ -1,5 +1,6 @@
-from PyQt4 import QtCore, QtGui
-from PyQt4.QtGui import *
+from PyQt5 import QtCore, QtGui
+from PyQt5.QtWidgets import *
+from PyQt5.QtGui import *
 from Controller.VeiculoCTR import VeiculoCTR
 
 try:
@@ -9,12 +10,12 @@ except AttributeError:
         return s
 
 try:
-    _encoding = QtGui.QApplication.UnicodeUTF8
+    _encoding = QApplication.UnicodeUTF8
     def _translate(context, text, disambig):
-        return QtGui.QApplication.translate(context, text, disambig, _encoding)
+        return QApplication.translate(context, text, disambig, _encoding)
 except AttributeError:
     def _translate(context, text, disambig):
-        return QtGui.QApplication.translate(context, text, disambig)
+        return QApplication.translate(context, text, disambig)
 
 class Ui_frmVeiculos(object):
     #PREENCHER OS CAMPOS PARA ALTERAÇÃO
@@ -111,83 +112,83 @@ class Ui_frmVeiculos(object):
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(_fromUtf8("Imagens/FrmIcon_Car.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         frmVeiculos.setWindowIcon(icon)
-        self.groupBox = QtGui.QGroupBox(frmVeiculos)
+        self.groupBox = QGroupBox(frmVeiculos)
         self.groupBox.setGeometry(QtCore.QRect(10, 10, 521, 211))
         self.groupBox.setTitle(_fromUtf8(""))
         self.groupBox.setObjectName(_fromUtf8("groupBox"))
-        self.label = QtGui.QLabel(self.groupBox)
+        self.label = QLabel(self.groupBox)
         self.label.setGeometry(QtCore.QRect(10, 10, 46, 13))
         self.label.setObjectName(_fromUtf8("label"))
-        self.label_2 = QtGui.QLabel(self.groupBox)
+        self.label_2 = QLabel(self.groupBox)
         self.label_2.setGeometry(QtCore.QRect(220, 10, 46, 13))
         self.label_2.setObjectName(_fromUtf8("label_2"))
-        self.lbEndereco = QtGui.QLabel(self.groupBox)
+        self.lbEndereco = QLabel(self.groupBox)
         self.lbEndereco.setGeometry(QtCore.QRect(220, 60, 51, 16))
         self.lbEndereco.setObjectName(_fromUtf8("lbEndereco"))
-        self.lbEmail = QtGui.QLabel(self.groupBox)
+        self.lbEmail = QLabel(self.groupBox)
         self.lbEmail.setGeometry(QtCore.QRect(420, 10, 46, 13))
         self.lbEmail.setObjectName(_fromUtf8("lbEmail"))
-        self.edtModelo = QtGui.QLineEdit(self.groupBox)
+        self.edtModelo = QLineEdit(self.groupBox)
         self.edtModelo.setGeometry(QtCore.QRect(10, 30, 201, 20))
         self.edtModelo.setObjectName(_fromUtf8("edtModelo"))
-        self.edtMarca = QtGui.QLineEdit(self.groupBox)
+        self.edtMarca = QLineEdit(self.groupBox)
         self.edtMarca.setGeometry(QtCore.QRect(220, 30, 191, 20))
         self.edtMarca.setObjectName(_fromUtf8("edtMarca"))
-        self.edtAno = QtGui.QLineEdit(self.groupBox)
+        self.edtAno = QLineEdit(self.groupBox)
         self.edtAno.setGeometry(QtCore.QRect(420, 80, 91, 20))
         self.edtAno.setObjectName(_fromUtf8("edtAno"))
-        self.edtKm = QtGui.QLineEdit(self.groupBox)
+        self.edtKm = QLineEdit(self.groupBox)
         self.edtKm.setGeometry(QtCore.QRect(220, 80, 91, 20))
         self.edtKm.setObjectName(_fromUtf8("edtKm"))
-        self.edtDiaria = QtGui.QLineEdit(self.groupBox)
+        self.edtDiaria = QLineEdit(self.groupBox)
         self.edtDiaria.setGeometry(QtCore.QRect(320, 80, 91, 20))
         self.edtDiaria.setObjectName(_fromUtf8("edtDiaria"))
-        self.edtTipo = QtGui.QLineEdit(self.groupBox)
+        self.edtTipo = QLineEdit(self.groupBox)
         self.edtTipo.setGeometry(QtCore.QRect(10, 80, 201, 20))
         self.edtTipo.setObjectName(_fromUtf8("edtTipo"))
-        self.edtPlaca = QtGui.QLineEdit(self.groupBox)
+        self.edtPlaca = QLineEdit(self.groupBox)
         self.edtPlaca.setGeometry(QtCore.QRect(420, 30, 91, 20))
         self.edtPlaca.setObjectName(_fromUtf8("edtPlaca"))
-        self.label_3 = QtGui.QLabel(self.groupBox)
+        self.label_3 = QLabel(self.groupBox)
         self.label_3.setGeometry(QtCore.QRect(420, 60, 46, 13))
         self.label_3.setObjectName(_fromUtf8("label_3"))
-        self.groupBox_3 = QtGui.QGroupBox(self.groupBox)
+        self.groupBox_3 = QGroupBox(self.groupBox)
         self.groupBox_3.setGeometry(QtCore.QRect(10, 120, 81, 80))
         self.groupBox_3.setObjectName(_fromUtf8("groupBox_3"))
-        self.rbAlugado = QtGui.QRadioButton(self.groupBox_3)
+        self.rbAlugado = QRadioButton(self.groupBox_3)
         self.rbAlugado.setGeometry(QtCore.QRect(10, 20, 82, 17))
         self.rbAlugado.setObjectName(_fromUtf8("rbAlugado"))
-        self.rbDisponivel = QtGui.QRadioButton(self.groupBox_3)
+        self.rbDisponivel = QRadioButton(self.groupBox_3)
         self.rbDisponivel.setGeometry(QtCore.QRect(10, 50, 82, 17))
         self.rbDisponivel.setObjectName(_fromUtf8("rbDisponivel"))
-        self.groupBox_4 = QtGui.QGroupBox(self.groupBox)
+        self.groupBox_4 = QGroupBox(self.groupBox)
         self.groupBox_4.setGeometry(QtCore.QRect(100, 120, 81, 80))
         self.groupBox_4.setObjectName(_fromUtf8("groupBox_4"))
-        self.rbBatido = QtGui.QRadioButton(self.groupBox_4)
+        self.rbBatido = QRadioButton(self.groupBox_4)
         self.rbBatido.setGeometry(QtCore.QRect(10, 20, 82, 17))
         self.rbBatido.setObjectName(_fromUtf8("rbBatido"))
-        self.rbPerfeito = QtGui.QRadioButton(self.groupBox_4)
+        self.rbPerfeito = QRadioButton(self.groupBox_4)
         self.rbPerfeito.setGeometry(QtCore.QRect(10, 50, 82, 17))
         self.rbPerfeito.setObjectName(_fromUtf8("rbPerfeito"))
-        self.label_4 = QtGui.QLabel(self.groupBox)
+        self.label_4 = QLabel(self.groupBox)
         self.label_4.setGeometry(QtCore.QRect(320, 60, 81, 16))
         self.label_4.setObjectName(_fromUtf8("label_4"))
-        self.label_5 = QtGui.QLabel(self.groupBox)
+        self.label_5 = QLabel(self.groupBox)
         self.label_5.setGeometry(QtCore.QRect(200, 120, 46, 13))
         self.label_5.setObjectName(_fromUtf8("label_5"))
-        self.label_6 = QtGui.QLabel(self.groupBox)
+        self.label_6 = QLabel(self.groupBox)
         self.label_6.setGeometry(QtCore.QRect(10, 60, 91, 16))
         self.label_6.setObjectName(_fromUtf8("label_6"))
-        self.txtDescricao = QtGui.QTextEdit(self.groupBox)
+        self.txtDescricao = QTextEdit(self.groupBox)
         self.txtDescricao.setGeometry(QtCore.QRect(200, 140, 311, 61))
         self.txtDescricao.setObjectName(_fromUtf8("txtDescricao"))
-        self.groupBox_2 = QtGui.QGroupBox(frmVeiculos)
+        self.groupBox_2 = QGroupBox(frmVeiculos)
         self.groupBox_2.setGeometry(QtCore.QRect(10, 230, 521, 81))
         self.groupBox_2.setTitle(_fromUtf8(""))
         self.groupBox_2.setObjectName(_fromUtf8("groupBox_2"))
 
         #BTN SALVAR
-        self.btnSalvar = QtGui.QPushButton(self.groupBox_2)
+        self.btnSalvar = QPushButton(self.groupBox_2)
         self.btnSalvar.setGeometry(QtCore.QRect(400, 10, 101, 61))
         self.btnSalvar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         icon1 = QtGui.QIcon()
@@ -222,7 +223,7 @@ class Ui_frmVeiculos(object):
 
 if __name__ == "__main__":
     import sys
-    app = QtGui.QApplication(sys.argv)
+    app = QApplication(sys.argv)
     frmVeiculos = QtGui.QWidget()
     ui = Ui_frmVeiculos()
     ui.setupUi(frmVeiculos)
